@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # App title
-st.title("Customer Data Analysis App")
+st.title("Customer Purchasing Behavior Datataset Analysis")
 
 # Load data
 st.header("Load Dataset")
