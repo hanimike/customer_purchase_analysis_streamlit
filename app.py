@@ -62,3 +62,14 @@ st.write()
 freq = data['region'].value_counts()
 st.subheader("Customers Per Region") 
 st.write(freq) 
+
+# age and purchase  frequency
+young_freq = data[data['age'] < 30]['purchase_frequency'].mean() 
+senior_freq = data[data['age'] > 50]['purchase_frequency'].mean() 
+st.subheader("Purchase Frequency by Age:") 
+st.write(f"Under 30: {young_freq:.2f}") 
+st.write(f"Over 50: {senior_freq:.2f}") 
+st.write(f"More frequent group: {'Young' if young_freq > senior_freq else 
+'Senior'}") 
+st.write() 
+
