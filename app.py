@@ -90,3 +90,13 @@ top_spender_per_visit = data.nlargest(5, 'spending_per_visit')
 st.subheader("Top 5 Customers by Spending per Visit:") 
 st.write(top_spender_per_visit[['user_id', 'spending_per_visit', 'purchase_amount', 'purchase_frequency']]) 
 
+# LOYALTY TIER CLASSIFICATION
+for col in ['purchase_amount', 'purchase_frequency', 'loyalty_score']: 
+    if col in data.columns: data[col] = pd.to_numeric(data[col], errors='coerce').astype('float64')
+for col in data.select_dtypes(include=['object']).columns: data[col] = data[col].astype(str)
+loyalty_bins = [0, 5, 7, 10] 
+loyalty_labels = ['Low', 'Medium', 'High'] 
+data['loyalty_tier'] = pd.cut(data['loyalty_score'], bins=loyalty_bins, labels=loyalty_labels) 
+loyalty_tier_counts = data['loyalty_tier'].value_counts() 
+st.subheader(" Customers per Loyalty Tier:") 
+st.write(loyalty_tier_counts) 
