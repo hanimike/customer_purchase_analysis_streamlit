@@ -121,3 +121,21 @@ plt.ylabel('Number of Customers', fontsize=12)
 plt.grid(alpha=0.3) 
 st.pyplot(plt)
 
+# Regional Analysis (Bar Chart) 
+region_stats = data.groupby('region').agg({ 
+    'purchase_amount': 'mean', 
+    'loyalty_score': 'mean', 
+    'purchase_frequency': 'mean', 
+    'user_id': 'count' 
+}).rename(columns={'user_id': 'customer_count'}).reset_index()
+plt.figure(figsize=(10, 6)) 
+bars = plt.bar(region_stats['region'], 
+               region_stats['purchase_amount'], color=['red', 'blue', 'green', 'orange'])
+plt.title('Average Purchase Amount by Region', fontsize=16) 
+plt.xlabel('Region', fontsize=12) 
+plt.ylabel('Average Purchase Amount ($)', fontsize=12)
+for bar in bars:
+    height = bar.get_height() 
+    plt.text(bar.get_x() + bar.get_width()/2., height + 5, f'${height:.0f}', ha='center', va='bottom') 
+    plt.grid(axis='y', alpha=0.3)
+st.pyplot(plt)
