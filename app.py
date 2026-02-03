@@ -100,3 +100,14 @@ data['loyalty_tier'] = pd.cut(data['loyalty_score'], bins=loyalty_bins, labels=l
 loyalty_tier_counts = data['loyalty_tier'].value_counts() 
 st.subheader(" Customers per Loyalty Tier:") 
 st.write(loyalty_tier_counts) 
+
+# CUSTOMER RETENTION INSIGHT
+data['purchase_frequency'] = pd.to_numeric(data['purchase_frequency'], errors='coerce')
+data['region'] = data['region'].astype(str)
+data = data.dropna(subset=['purchase_frequency', 'region'])
+north_freq = data[data['region'] == 'North']['purchase_frequency'].mean() 
+south_freq = data[data['region'] == 'South']['purchase_frequency'].mean() 
+st.subheader("Purchase Frequency by Region:") 
+st.write(f"North: {north_freq:.2f}") 
+st.write(f"South: {south_freq:.2f}") 
+st.write(f"Difference: {abs(north_freq - south_freq):.2f}") 
