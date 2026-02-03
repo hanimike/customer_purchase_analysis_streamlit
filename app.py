@@ -73,3 +73,7 @@ st.write(f"More frequent group: {'Young' if young_freq > senior_freq else
 'Senior'}") 
 st.write() 
 
+# frequency vs loyalty correlation
+freq_loyalty_corr = data['purchase_frequency'].corr(data['loyalty_score']) 
+st.subheader("Correlation between frequency and loyalty")
+st.write(f"Correlation between frequency and loyalty: {freq_loyalty_corr:.3f}")
