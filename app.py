@@ -77,3 +77,16 @@ st.write()
 freq_loyalty_corr = data['purchase_frequency'].corr(data['loyalty_score']) 
 st.subheader("Correlation between frequency and loyalty")
 st.write(f"Correlation between frequency and loyalty: {freq_loyalty_corr:.3f}")
+
+# spend per visit
+# Spending_per_visit = purchase_amount / purchase_frequency 
+for col in ['purchase_amount', 'purchase_frequency', 'loyalty_score']: 
+    if col in data.columns: data[col] = pd.to_numeric(data[col], errors='coerce')
+data = data.dropna(subset=['purchase_amount', 'purchase_frequency']) 
+data = data[data['purchase_frequency'] > 0]
+data['spending_per_visit'] = data['purchase_amount'] / data['purchase_frequency'] 
+# Top 5 customers who spend the most per visit 
+top_spender_per_visit = data.nlargest(5, 'spending_per_visit') 
+st.subheader("Top 5 Customers by Spending per Visit:") 
+st.write(top_spender_per_visit[['user_id', 'spending_per_visit', 'purchase_amount', 'purchase_frequency']]) 
+
