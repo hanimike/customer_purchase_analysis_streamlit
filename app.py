@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-import plotly.express as px
 
 # App title
 st.title("Customer Purchasing Behavior Datataset Analysis")
@@ -122,7 +121,3 @@ plt.ylabel('Number of Customers', fontsize=12)
 plt.grid(alpha=0.3) 
 st.pyplot(plt)
 
-# Annual Income vs Purchase Amount (Scatter Plot) 
-fig = px.scatter( data, x='annual_income', y='purchase_amount', color='loyalty_score', hover_data=['age', 'region', 'purchase_frequency'], title='Annual Income vs Purchase Amount', labels={ 'annual_income': 'Annual Income ($)', 'purchase_amount': 'Purchase Amount ($)', 'loyalty_score': 'Loyalty Score' } )
-st.subheader("Annual Income vs Purchase Amount")
-st.plotly_chart(fig)
