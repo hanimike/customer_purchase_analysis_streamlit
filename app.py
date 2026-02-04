@@ -177,3 +177,12 @@ plt.title('Customer Count by Region (Colored)', fontsize=14)
 plt.xlabel('Region') 
 plt.ylabel('Count') 
 st.pyplot(plt)
+
+# horizontal countplot
+data['region'] = data['region'].astype(str)
+plt.figure(figsize=(8, 5)) 
+sns.countplot(data=data, y='region')  # Just change x to y! 
+plt.title('Customer Count by Region (Horizontal)', fontsize=14) 
+plt.xlabel('Number of Customers') 
+plt.ylabel('Region') 
+st.pyplot(plt)
