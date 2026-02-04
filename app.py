@@ -255,3 +255,11 @@ color="Correlation"),
                 color_continuous_scale='RdBu') 
 fig.update_layout(title='Correlation Heatmap') 
 st.plotly_chart(fig)
+
+# regional analysis
+fig = px.bar(region_stats, x='region', y=['purchase_amount', 
+'loyalty_score'], 
+             title='Regional Comparison', 
+             labels={'value': 'Score/Amount', 'variable': 'Metric'}, 
+             barmode='group') 
+st.plotly_chart(fig)
