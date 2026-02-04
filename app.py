@@ -186,3 +186,15 @@ plt.title('Customer Count by Region (Horizontal)', fontsize=14)
 plt.xlabel('Number of Customers') 
 plt.ylabel('Region') 
 st.pyplot(plt)
+
+# Countplot with Age Groups 
+data['age_group'] = pd.cut(data['age'],  
+                         bins=[20, 30, 40, 50, 60],  
+                         labels=['20-29', '30-39', '40-49', '50+']) 
+ 
+plt.figure(figsize=(10, 6)) 
+sns.countplot(data=data, x='age_group', palette='Set2') 
+plt.title('Number of Customers in Each Age Group', fontsize=14) 
+plt.xlabel('Age Group') 
+plt.ylabel('Count') 
+st.pyplot(plt)
