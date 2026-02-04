@@ -232,3 +232,15 @@ fig = px.histogram(data, x='purchase_frequency',
                    labels={'purchase_frequency': 'Purchase Frequency'}, 
                    opacity=0.7) 
 st.plotly_chart(fig)
+
+# Age vs Loyalty Score with Purchase Frequency (Bubble Chart) 
+fig = px.scatter(data, x='age', y='loyalty_score', 
+                 size='purchase_frequency', 
+                 color='region', 
+                 hover_name='user_id', 
+                 size_max=60, 
+                 title='Age vs Loyalty Score (Bubble size = Purchase Frequency)', 
+                 labels={'age': 'Age', 
+                         'loyalty_score': 'Loyalty Score', 
+                         'purchase_frequency': 'Purchase Frequency'}) 
+st.plotly_chart(fig)
