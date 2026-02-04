@@ -139,3 +139,16 @@ for bar in bars:
     plt.text(bar.get_x() + bar.get_width()/2., height + 5, f'${height:.0f}', ha='center', va='bottom') 
     plt.grid(axis='y', alpha=0.3)
 st.pyplot(plt)
+#  Loyalty Score Distribution (Box Plot)
+plt.figure(figsize=(10, 6)) 
+plt.boxplot(data['loyalty_score'], vert=True, patch_artist=True, 
+           boxprops=dict(facecolor='lightblue')) 
+plt.title('Loyalty Score Distribution', fontsize=16) 
+plt.ylabel('Loyalty Score', fontsize=12) 
+plt.grid(axis='y', alpha=0.3) 
+ 
+# Add mean line 
+plt.axhline(y=data['loyalty_score'].mean(), color='red',  
+           linestyle='--', label=f'Mean: {data["loyalty_score"].mean():.2f}') 
+plt.legend() 
+st.pyplot(plt)
