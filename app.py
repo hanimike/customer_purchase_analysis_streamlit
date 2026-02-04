@@ -224,3 +224,11 @@ fig.update_layout(scene=dict(
                     yaxis_title='Annual Income ($)', 
                     zaxis_title='Purchase Amount ($)')) 
 st.plotly_chart(fig)
+
+# purchase frequency
+fig = px.histogram(data, x='purchase_frequency',  
+                   marginal='box', 
+                   title='Purchase Frequency Distribution', 
+                   labels={'purchase_frequency': 'Purchase Frequency'}, 
+                   opacity=0.7) 
+st.plotly_chart(fig)
