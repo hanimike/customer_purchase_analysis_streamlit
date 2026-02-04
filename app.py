@@ -244,3 +244,14 @@ fig = px.scatter(data, x='age', y='loyalty_score',
                          'loyalty_score': 'Loyalty Score', 
                          'purchase_frequency': 'Purchase Frequency'}) 
 st.plotly_chart(fig)
+
+#  Correlation Heatmap 
+correlation_matrix = data[['age', 'annual_income', 'purchase_amount',  
+                         'loyalty_score', 'purchase_frequency']].corr() 
+fig = px.imshow(correlation_matrix,labels=dict(x="Variable", y="Variable", 
+color="Correlation"), 
+                x=correlation_matrix.columns, 
+                y=correlation_matrix.columns, 
+                color_continuous_scale='RdBu') 
+fig.update_layout(title='Correlation Heatmap') 
+st.plotly_chart(fig)
