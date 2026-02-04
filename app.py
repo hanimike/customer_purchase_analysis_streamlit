@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import plotly.express as px
 
 # App title
 st.title("Customer Purchasing Behavior Datataset Analysis")
@@ -207,3 +208,19 @@ plt.xlabel('Age Group')
 plt.ylabel('Count') 
 plt.legend(title='Region') 
 st.pyplot(plt) 
+
+#  3D Scatter Plot (Advanced)
+fig = px.scatter_3d(data, x='age', y='annual_income', 
+z='purchase_amount', 
+                    color='loyalty_score', 
+                    hover_data=['region', 'purchase_frequency'], 
+                    title='3D View: Age, Income, and Purchase Amount', 
+                    labels={'age': 'Age', 
+                            'annual_income': 'Annual Income ($)', 
+                            'purchase_amount': 'Purchase Amount ($)', 
+                            'loyalty_score': 'Loyalty Score'}) 
+fig.update_layout(scene=dict( 
+                    xaxis_title='Age', 
+                    yaxis_title='Annual Income ($)', 
+                    zaxis_title='Purchase Amount ($)')) 
+st.plotly_chart(fig)
