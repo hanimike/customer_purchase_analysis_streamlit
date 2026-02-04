@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 # App title
 st.title("Customer Purchasing Behavior Datataset Analysis")
@@ -166,4 +167,13 @@ mean_freq = data['purchase_frequency'].mean()
 plt.axvline(x=mean_freq, color='red', linestyle='--',  
            label=f'Mean: {mean_freq:.1f}') 
 plt.legend() 
+st.pyplot(plt)
+
+# countplot 
+plt.figure(figsize=(10, 6)) 
+sns.countplot(data=data, x='region', hue='region',  
+palette='viridis', legend=False) 
+plt.title('Customer Count by Region (Colored)', fontsize=14) 
+plt.xlabel('Region') 
+plt.ylabel('Count') 
 st.pyplot(plt)
