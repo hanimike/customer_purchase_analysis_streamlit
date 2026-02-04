@@ -152,3 +152,18 @@ plt.axhline(y=data['loyalty_score'].mean(), color='red',
            linestyle='--', label=f'Mean: {data["loyalty_score"].mean():.2f}') 
 plt.legend() 
 st.pyplot(plt)
+
+# Purchase Frequency Distribution (Density)
+plt.figure(figsize=(10, 6)) 
+data['purchase_frequency'].plot(kind='kde', linewidth=2) 
+plt.title('Purchase Frequency Distribution', fontsize=16) 
+plt.xlabel('Purchase Frequency', fontsize=12) 
+plt.ylabel('Density', fontsize=12) 
+plt.grid(alpha=0.3) 
+ 
+# Add vertical line at mean 
+mean_freq = data['purchase_frequency'].mean() 
+plt.axvline(x=mean_freq, color='red', linestyle='--',  
+           label=f'Mean: {mean_freq:.1f}') 
+plt.legend() 
+st.pyplot(plt)
